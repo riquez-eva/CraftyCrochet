@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}Catégories{% endblock %}
+{% block body %}
+
+<main class="container">
+    <div class="category-card">
+        <img class="m-5 CatHeading" src="/pictures/Accessories.svg" alt="Accessoires">
+            <p class="anonymous-pro-bold">Titre dingue</p><br>
+            <p class="anonymous-pro-regular">Description blabla voila et tout</p>
+            <div class="text-end">
+                <a href="{{ path('app_accessories') }}" class="btn ButtonClass anonymous-pro-bold px-5 py-3">See More</a>
+            </div>    
+    </div>
+    <div class="category-card">
+        <img class="m-5 CatHeading" src="/pictures/wearable.svg" alt="Vêtements">
+            <p class="anonymous-pro-bold">Titre dingue</p><br>
+            <p class="anonymous-pro-regular">Description blabla voila et tout</p>
+            <div class="text-end">
+                <a href="{{ path('app_wearable') }}" class="btn ButtonClass anonymous-pro-bold px-5 py-3">See More</a>
+            </div>
+        </div>
+    <div class="category-card">
+        <img class="m-5 CatHeading" src="/pictures/Decorations.svg" alt="Decorations">
+            <p class="anonymous-pro-bold">Titre dingue</p><br>
+            <p class="anonymous-pro-regular">Description blabla voila et tout</p>
+            <div class="text-end">
+                <a href="{{ path('app_decorations') }}" class="btn ButtonClass anonymous-pro-bold px-5 py-3">See More</a>
+            </div>
+    </div>
+</main>
+
+{% endblock %}

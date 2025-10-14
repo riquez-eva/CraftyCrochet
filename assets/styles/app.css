@@ -1,3 +1,128 @@
+/*Font*/
+.anonymous-pro-regular {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.anonymous-pro-bold {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.anonymous-pro-regular-italic {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.anonymous-pro-bold-italic {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
 body {
-    background-color: skyblue;
+    background-color: #F5F5F5;
+}
+
+.CardAtricle{
+ border: solid #9e3838;
+}
+.ButtonClass{
+  background-color: #EE5656;
+  color: white;
+}
+
+.MaxiCard{
+  background-color: #faae6b;
+}
+
+.product-card {
+  max-width: 80%; /* largeur totale */
+  overflow: hidden;
+}
+
+.btn-add-to-cart {
+  width: 50px;
+  height: 50px;
+  cursor: pointer; /* pas actif maintenant, mais prêt pour l’avenir */
+  transition: transform 0.2s ease;
+}
+
+.btn-add-to-cart:hover {
+  transform: scale(1.05);
+}
+
+
+.CatHeading{
+  transition: transform 0.4s ease, filter 0.4s ease;
+  border-radius: 10px;
+}
+
+.CatHeading:hover{
+  transform: scale(1.03);
+  filter: brightness(0.8) saturate(1.2);
+}
+.category-card-in {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 1rem;
+  background: rgba(255, 206, 101, 0.288); /* léger fond blanc transparent */
+  backdrop-filter: blur(6px); /* effet verre dépoli */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 2%;
+}
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 2rem;
+  background: rgba(255, 206, 101, 0.288); /* léger fond blanc transparent */
+  backdrop-filter: blur(6px); /* effet verre dépoli */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 5%;
+}
+
+/* Petites formes décoratives */
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.4), transparent 70%);
+  border-radius: 50%;
+}
+
+.category-card::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.4), transparent 70%);
+  border-radius: 50%;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 214, 139, 0.15);
+}
+
+
+/* 📴 Désactivation des transitions sur mobile */
+@media (max-width: 768px) {
+  .category-card,
+  .category-card {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
 }

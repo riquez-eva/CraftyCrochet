@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}Détails{% endblock %}
+{% block body %}
+<img class="mx-auto d-block m-5" src="/pictures/DetailsHeading.svg" alt="Details">
+
+
+
+<div class="container my-5 anonymous-pro-bold">
+  <div class="card product-card shadow-sm p-3 mx-auto MaxiCard">
+    <div class="row g-0 align-items-center">
+      <!-- Image -->
+      <div class="col-md-4">
+        <img src="/pictures/ton-image.jpg" alt="Produit" class="img-fluid rounded-start">
+      </div>
+
+      <!-- Contenu texte -->
+      <div class="col-md-8 d-flex flex-column justify-content-between position-relative">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Title</h5>
+          <p class="card-text text-muted">Description</p>
+        </div>
+
+        <!-- Texte + bouton alignés -->
+        <div class="position-absolute bottom-0 end-0 m-3 d-flex align-items-center gap-2">
+          <p class="mb-0">Add To Cart</p>
+          <a href="#">
+            <img src="/pictures/PlusButton.svg" alt="Add to Cart" class="btn-add-to-cart" />
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

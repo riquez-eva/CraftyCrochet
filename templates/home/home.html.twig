@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+
+        <img src="/pictures/Stars.svg" alt="Etoiles" class="img-fluid mx-auto d-block mt-4" style="max-width: 80%; height: auto;">
+    </div>
+
+<h1 class="text-center anonymous-pro-bold">Mettre des images previews ici</h1>
+
+<img class="mx-auto d-block m-5" src="/pictures/NosBestSellers.svg" alt="Nos Best Sellers ">
+
+ <div class="container">
+        <section class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+            <div class="category-card-in CardArticle p-3 text-center" style="width: 18rem;">
+                <p class="anonymous-pro-regular">Article trop bien à mettre ici</p>
+                <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
+            </div>
+            <div class="category-card-in CardArticle p-3 text-center" style="width: 18rem;">
+                <p class="anonymous-pro-regular">Article trop bien à mettre ici</p>
+                <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
+            </div>
+            <div class="category-card-in CardArticle p-3 text-center" style="width: 18rem;">
+                <p class="anonymous-pro-regular">Article trop bien à mettre ici</p>
+                <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+ 
+ <img class="rounded mx-auto d-block" src="/pictures/CraftyCrochetLogo.svg" alt="Crafty Crochet Logo">
+
+<nav class="navbar navbar-expand-lg justify-content-center m-5">
+  <div class="navbar-nav text-center">
+    <a class="nav-link px-3" href="{{ path('app_home') }}">
+      <img 
+        src="{{ app.request.attributes.get('_route') == 'app_home' 
+          ? asset('/pictures/SecondaryHome.svg') 
+          : asset('/pictures/PrimaryHome.svg') }}" 
+        alt="Home" 
+        class="nav-btn"
+      >
+    </a>
+    <a class="nav-link px-3" href="{{ path('app_categories') }}">
+      <img 
+        src="{{ app.request.attributes.get('_route') == 'app_categories' 
+          ? asset('/pictures/SecondaryCategories.svg') 
+          : asset('/pictures/PrimaryCategories.svg') }}" 
+        alt="Categories" 
+        class="nav-btn"
+      >
+    </a>
+    <a class="nav-link px-3" href="{{ path('app_contact')}}">
+      <img 
+        src="{{ app.request.attributes.get('_route') == 'app_contact' 
+          ? asset('/pictures/SecondaryContact.svg') 
+          : asset('/pictures/PrimaryContact.svg') }}" 
+        alt="Contact" 
+        class="nav-btn"
+      >
+    </a>
+    <a class="nav-link px-3" href="#">
+      <img 
+        src="/pictures/PrimaryLogin.svg" 
+        alt="Login" 
+        class="nav-btn"
+      >
+    </a>
+    <a class="nav-link px-3" href="#">
+      <img 
+        src="/pictures/Panier.svg" 
+        alt="Panier" 
+        class="nav-btn"
+      >
+    </a>
+
+  </div>
+  </nav>
