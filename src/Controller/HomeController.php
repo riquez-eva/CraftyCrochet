@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,10 +10,14 @@ use Symfony\Component\Routing\Attribute\Route;
 final class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function home(): Response
+    public function home(ArticleRepository $articleRepository): Response
     {
+        //On récupère tout les articles actifs
+        $articles = $articleRepository->findBy(['active' => true], ['id' => 'ASC']);
+        // le "1" à la fun limite à un seul article (le best-seller)
+
         return $this->render('home/home.html.twig', [
-            'controller_name' => 'HomeController',
+            'articles' => $articles,
         ]);
     }
 

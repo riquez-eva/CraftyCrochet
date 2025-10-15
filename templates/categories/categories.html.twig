@@ -3,29 +3,21 @@
 {% block body %}
 
 <main class="container">
-    <div class="category-card">
+    {% for categorie in categories %}
+    <div class="category-card-in">
+        {% if categorie.image %}
         <img class="m-5 CatHeading" src="/pictures/Accessories.svg" alt="Accessoires">
-            <p class="anonymous-pro-bold">Titre dingue</p><br>
-            <p class="anonymous-pro-regular">Description blabla voila et tout</p>
-            <div class="text-end">
-                <a href="{{ path('app_accessories') }}" class="btn ButtonClass anonymous-pro-bold px-5 py-3">See More</a>
-            </div>    
-    </div>
-    <div class="category-card">
-        <img class="m-5 CatHeading" src="/pictures/wearable.svg" alt="Vêtements">
-            <p class="anonymous-pro-bold">Titre dingue</p><br>
-            <p class="anonymous-pro-regular">Description blabla voila et tout</p>
-            <div class="text-end">
-                <a href="{{ path('app_wearable') }}" class="btn ButtonClass anonymous-pro-bold px-5 py-3">See More</a>
-            </div>
-        </div>
-    <div class="category-card">
-        <img class="m-5 CatHeading" src="/pictures/Decorations.svg" alt="Decorations">
-            <p class="anonymous-pro-bold">Titre dingue</p><br>
-            <p class="anonymous-pro-regular">Description blabla voila et tout</p>
-            <div class="text-end">
-                <a href="{{ path('app_decorations') }}" class="btn ButtonClass anonymous-pro-bold px-5 py-3">See More</a>
-            </div>
+           {% endif %}
+                        <p class="anonymous-pro-bold">{{ categorie.libelle }}</p>
+                        <a href="{{ path('app_categorie', {slug: categorie.slug}) }}" 
+                        class="btn ButtonClass anonymous-pro-bold mt-2">
+                            See more
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+            <p class="text-center text-muted">Aucune catégorie disponible 😢</p>
+    {% endfor %}   
     </div>
 </main>
 

@@ -4,27 +4,40 @@
 {% block body %}
 
 
-        <img src="/pictures/Stars.svg" alt="Etoiles" class="img-fluid mx-auto d-block mt-4" style="max-width: 80%; height: auto;">
-    </div>
 
-<h1 class="text-center anonymous-pro-bold">Mettre des images previews ici</h1>
+<h1 class="text-center anonymous-pro-bold">Le meilleur du crochet!</h1>
 
 <img class="mx-auto d-block m-5" src="/pictures/NosBestSellers.svg" alt="Nos Best Sellers ">
+<h2 class="text-center anonymous-pro-bold">Fait à la main</h2>
 
- <div class="container">
-        <section class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
-            <div class="category-card-in CardArticle p-3 text-center" style="width: 18rem;">
-                <p class="anonymous-pro-regular">Article trop bien à mettre ici</p>
-                <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
-            </div>
-            <div class="category-card-in CardArticle p-3 text-center" style="width: 18rem;">
-                <p class="anonymous-pro-regular">Article trop bien à mettre ici</p>
-                <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
-            </div>
-            <div class="category-card-in CardArticle p-3 text-center" style="width: 18rem;">
-                <p class="anonymous-pro-regular">Article trop bien à mettre ici</p>
-                <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
-            </div>
+ <div class="container my-5">
+        <img src="/pictures/Stars.svg" alt="Etoiles" class="img-fluid mx-auto d-block mt-4" style="max-width: 80%; height: auto;">
+        <section class="row justify-content-center align-items-center gap-4 flex-wrap">
+                {% for article in articles %}
+                    <div class="category-card-in d-flex justify-content-center col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="CardArticle p-3 text-center" style="width: 18rem;">
+                            <img src="{{ asset('pictures/' ~ article.image) }}" 
+                                alt="{{ article.libelle }}" 
+                                class="img-fluid rounded d-block mx-auto">
+                            <p class="anonymous-pro-bold">{{ article.libelle }}</p>
+                            <p class="anonymous-pro-regular">{{ article.description }}</p>
+                            <p class="anonymous-pro-regular">{{ article.prix }} $</p>
+                            <p class="anonymous-pro-regular">{{ article.categorie.libelle }}</p>
+                            <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-center text-muted">Aucun article trouvé 😢</p>
+                {% endfor %}
+                            
+                            
+                            
+            
+            
+            
+            
+            
+        
         </section>
     </div>
 {% endblock %}
