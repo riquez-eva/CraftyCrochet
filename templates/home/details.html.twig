@@ -6,30 +6,40 @@
 
 
 <div class="container my-5 anonymous-pro-bold">
-  <div class="category-card-in shadow-sm p-3 mx-auto ">
+  <div class="category-card-in shadow-sm p-3 mx-auto">
     <div class="row g-0 align-items-center">
+      
       <!-- Image -->
       <div class="col-md-4">
-        <img src="/pictures/ton-image.jpg" alt="Produit" class="img-fluid rounded-start">
+        <img src="{{ asset('pictures/' ~ article.image) }}" 
+             alt="{{ article.libelle }}" 
+             class="img-fluid rounded">
       </div>
 
       <!-- Contenu texte -->
-      <div class="col-md-8 d-flex flex-column justify-content-between position-relative">
+      <div class="col-md-8 d-flex flex-column position-relative h-100 p-5">
+        
+        <!-- Texte principal -->
         <div class="card-body">
-          <h5 class="card-title fw-bold">Title de dingue</h5>
-          <p class="card-text text-muted">Description de la mort qui tue</p>
+          <h5 class="card-title fw-bold">{{ article.libelle }}</h5>
+          <p class="card-text text-muted">{{ article.description }}</p>
+          <p>Prix : {{ article.prix }} €</p>
         </div>
-
-        <!-- Texte + bouton alignés -->
+      </div>
+    </div>
+        <!-- Bouton Add To Cart en bas à droite -->
         <div class="position-absolute bottom-0 end-0 m-3 d-flex align-items-center gap-2">
           <p class="mb-0">Add To Cart</p>
           <a href="#">
-            <img src="/pictures/PlusButton.svg" alt="Add to Cart" class="btn-add-to-cart" />
+            <img src="{{ asset('pictures/PlusButton.svg') }}" alt="Add to Cart" class="btn-add-to-cart" />
           </a>
         </div>
-
-      </div>
-    </div>
   </div>
+     <div>
+        <a href="{{ path('app_home') }}" class="btn ButtonClass justify-content-center">Retour</a>
+     </div>
 </div>
+
+
+
 {% endblock %}

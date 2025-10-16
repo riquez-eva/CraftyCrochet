@@ -5,12 +5,13 @@
 <main class="container">
     {% for categorie in categories %}
     <div class="category-card-in">
-        {% if categorie.image %}
-        <img class="m-5 CatHeading" src="/pictures/Accessories.svg" alt="Accessoires">
-           {% endif %}
-                        <p class="anonymous-pro-bold">{{ categorie.libelle }}</p>
+        {% if categorie.imagePreview %}
+                        <img src="{{ asset('pictures/' ~ categorie.imagePreview) }}"
+                             alt="{{ categorie.libelle }}"
+                             class="rounded-3 mb-3 imaPreview">
+        {% endif %}
                         <a href="{{ path('app_categorie', {slug: categorie.slug}) }}" 
-                        class="btn ButtonClass anonymous-pro-bold mt-2">
+                        class="btn ButtonClass anonymous-pro-bold mt-2 float-end">
                             See more
                         </a>
                     </div>

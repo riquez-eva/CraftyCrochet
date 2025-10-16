@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use App\Form\ContactFormType;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,19 +23,22 @@ final class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/details', name: 'app_details')]
-    public function details(): Response
+    #[Route('/details/{id}', name: 'app_details')]
+    public function details(Article $article): Response
     {
         return $this->render('home/details.html.twig', [
-            'controller_name' => 'HomeController',
+            'article' => $article,
         ]);
     }
 
     #[Route('/contact', name: 'app_contact')]
     public function contact(): Response
     {
+
+       $form = $this->createForm(ContactFormType::class);
+
         return $this->render('home/contact.html.twig', [
-            'controller_name' => 'HomeController',
+            "form" => $form    
         ]);
     }
 }

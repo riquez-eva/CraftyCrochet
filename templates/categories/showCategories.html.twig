@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-<h1 class="text-center anonymous-pro-bold">{{ categorie.libelle }}</h1>
-
 {% if categorie.image %}
     <img src="{{ asset('pictures/' ~ categorie.image) }}" 
          alt="{{ categorie.libelle }}" 
@@ -13,7 +11,7 @@
 <div class="container my-5">
     <div class="row justify-content-center g-4">
         {% for article in articles %}
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="category-card-in col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
                 <div class="CardArticle p-3 text-center" style="width: 18rem;">
                     <img src="{{ asset('pictures/' ~ article.image) }}" 
                          alt="{{ article.libelle }}" 
@@ -22,7 +20,7 @@
                     <p class="anonymous-pro-bold">{{ article.libelle }}</p>
                     <p class="anonymous-pro-regular">{{ article.description }}</p>
                     <p class="anonymous-pro-regular">{{ article.prix }} $</p>
-                    <a href="{{ path('app_details') }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
+                    <a href="/details/{{ article.id }}" class="btn ButtonClass anonymous-pro-bold">Détails</a>
                 </div>
             </div>
         {% else %}

@@ -15,16 +15,32 @@ class ArticleFixtures extends Fixture
 
         // Tableau clé = nom humain / valeur = slug
         $nomsCategories = [
-            'Accessoires' => 'accessoires',
-            'Vetements'   => 'vetements',     //  sans accent pour éviter les bugs
-            'Decorations' => 'decorations',   //  idem
+            'Accessoires' => [
+                'slug' => 'accessoires',
+                'image' => 'TitreAccessoires.svg',
+                'imagePreview' => 'PreviewAccessoires.svg',
+            ],
+             'Vetements' => [
+                'slug' => 'vetements',
+                'image' => 'TitreVetements.svg',
+                'imagePreview' => 'PreviewVetements.svg',
+             ],
+             'Decorations' => [
+                'slug' => 'decorations',
+                'image' => 'TitreDecorations.svg',
+                'imagePreview' => 'PreviewDecorations.svg',
+
+             ]
         ];
 
-        foreach ($nomsCategories as $nom => $slug) {
+        foreach ($nomsCategories as $nom => $data) {
             $categorie = new Categorie();
             $categorie->setLibelle($nom);
-            $categorie->setSlug($slug);
+            $categorie->setSlug($data['slug']);
+            $categorie->setImage($data['image']);
+            $categorie->setImagePreview($data['imagePreview']);
             $categorie->setActive(true);
+            
             $manager->persist($categorie);
             $categories[$nom] = $categorie;
         }

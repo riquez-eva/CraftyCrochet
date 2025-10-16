@@ -33,6 +33,9 @@ class Categorie
     #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'categorie')]
     private Collection $articles;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imagePreview = null;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -123,6 +126,18 @@ class Categorie
                 $article->setCategorie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImagePreview(): ?string
+    {
+        return $this->imagePreview;
+    }
+
+    public function setImagePreview(?string $imagePreview): static
+    {
+        $this->imagePreview = $imagePreview;
 
         return $this;
     }
