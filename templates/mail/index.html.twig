@@ -7,18 +7,12 @@
 <h3 class="text-center anonymous-pro-bold my-5">ici</h3>
 
 
-<div class="container-fluid col-6 contactField rounded p-3">
+<div class="container-fluid col-6 contactField rounded p-3 mx-auto">
 {{ form_start(form) }}
     {{ form_row(form.objet) }}
     {{ form_row(form.email) }}
     {{ form_row(form.message) }}
     {{ form_row(form.save,  {'attr': {'class': 'ButtonClass'}}) }}
-
-
-
-
-
-
 {{ form_end(form) }}
 </div>
 {% endblock %}

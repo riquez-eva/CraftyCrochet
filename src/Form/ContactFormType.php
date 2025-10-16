@@ -19,18 +19,25 @@ class ContactFormType extends AbstractType
         $builder
             ->add('objet', TextType::class, [
                 'label' => 'Objet',
+                'attr' =>[
+                'placeholder' => 'Entrez l\'objet de votre message'
+                ],
                 "constraints" => [
                     new NotBlank([], "Veuillez renseinger l'objet de votre demande'")
                 ]
                 ])
             ->add('email', EmailType::class, [
                 'label' => 'Votre E-mail',
+                'attr' => [
+                'placeholder' => 'votre.email@ici.com'],
                 "constraints" => [
                     new NotBlank([], "Veuillez renseinger votre email")
                 ]
                 ])
             ->add('message', TextareaType::class, [
                 'label' => 'Votre Message',
+                'attr' => [
+                'placeholder' => 'Ecrivez ici votre message'],
                 "constraints" => [
                     new NotBlank([], "Veuillez écrire votre message")
                 ]

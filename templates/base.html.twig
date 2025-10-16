@@ -14,7 +14,18 @@
         {% endblock %}
     </head>
     <body>
+    <!--<div class="banner">
+        <div class="banner-content">
+            🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶 🐱 🧶
+        </div>
+    </div>-->
         {% include 'navbar.html.twig' %}
+
+        {% for message in app.flashes('notice') %}
+            <div class="flash-message alert alert-danger anonymous-pro-regular">
+                {{ message }}
+            </div>
+        {% endfor %}
         {% block body %}
         
         

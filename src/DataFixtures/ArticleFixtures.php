@@ -73,6 +73,15 @@ class ArticleFixtures extends Fixture
         $article3->setCategorie($categories['Decorations']); // ✅ sans accent
         $manager->persist($article3);
 
+        $article4 = new Article();
+        $article4->setLibelle('Coussin Miffy');
+        $article4->setDescription('Coussin Miffy en fil chenille doux au toucher');
+        $article4->setPrix(20.00);
+        $article4->setImage('Decomiffycushion.jpeg');
+        $article4->setActive(true);
+        $article4->setCategorie($categories['Decorations']); // ✅ sans accent
+        $manager->persist($article4);
+
         $manager->flush();
     }
 }

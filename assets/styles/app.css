@@ -23,6 +23,55 @@
   font-style: italic;
 }
 
+/*Banderole dynamique*/
+.banner {
+    width: 100%;           /* largeur totale de la page */
+    overflow: hidden;      /* cache ce qui déborde */
+    background-color: #f8f0e3; /* couleur de fond sympa */
+    border: 2px solid #e6d3b3; /* bordure optionnelle */
+    padding: 10px 0;
+    white-space: nowrap;   /* garde le contenu sur une ligne */
+}
+
+.banner-content {
+    display: inline-block;
+    padding-left: 100%;    /* commence en dehors de la zone visible */
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.flash-message {
+    position: fixed;              /* reste au-dessus du contenu */
+    top: 50%;                     /* position verticale au milieu */
+    left: 50%;                    /* position horizontale au milieu */
+    transform: translate(-50%, -50%); /* centre parfaitement */
+    background-color: rgba(220, 53, 69, 0.9); /* rouge Bootstrap + transparence */
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1050;                /* au-dessus du reste */
+    text-align: center;
+    animation: fadeInOut 4s ease-in-out forwards;
+}
+
+/* Animation d'apparition/disparition fluide */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -60%); }
+    10% { opacity: 1; transform: translate(-50%, -50%); }
+    90% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -40%); }
+}
+
+
 
 body {
     background-color: #F5F5F5;
@@ -36,6 +85,7 @@ body {
 
 .MaxiCard{
   background-color: #faae6b;
+  
 }
 
 .product-card {
@@ -64,6 +114,28 @@ body {
   transform: scale(1.03);
   filter: brightness(0.8) saturate(1.2);
 }
+
+.contactField{
+  background: #f04646;
+background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 111, 0.67) 100%);
+}
+
+.contactField label,
+.contactField button {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 700; /* bold si tu veux */
+}
+
+
+/* Facultatif : placeholder en même police */
+.contactField input,
+.contactField textarea,
+.contactField select,
+.contactField ::placeholder {
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 400;
+}
+
 .category-card-in {
   position: relative;
  /* overflow: hidden;*/
@@ -136,4 +208,12 @@ body {
     box-shadow: none !important;
     filter: none !important;
     }
+}
+
+/* 💡 Pour petits écrans */
+@media (max-width: 768px) {
+
+  body {
+    margin: 0 !important;   /* au cas où le body ait des marges */
+  }
 }
