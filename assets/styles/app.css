@@ -115,9 +115,16 @@ body {
   filter: brightness(0.8) saturate(1.2);
 }
 
-.contactField{
+/*.contactField{
   background: #f04646;
 background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 111, 0.67) 100%);
+}*/
+
+
+.form-control {
+  background-color: #f7f7f7;
+  border: 1px solid #f4a261;
+  border-radius: 6px;
 }
 
 .contactField label,
@@ -216,4 +223,13 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
   body {
     margin: 0 !important;   /* au cas où le body ait des marges */
   }
+}
+
+
+/* === FOOTER === */
+
+footer{
+  background-color: #EE5656;
+  margin-top: 10%;
+  padding-top: 5%;
 }
