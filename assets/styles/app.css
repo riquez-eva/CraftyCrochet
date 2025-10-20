@@ -48,6 +48,7 @@
     }
 }
 
+/*Accusé de mail*/
 .flash-message {
     position: fixed;              /* reste au-dessus du contenu */
     top: 50%;                     /* position verticale au milieu */
@@ -71,6 +72,55 @@
     100% { opacity: 0; transform: translate(-50%, -40%); }
 }
 
+/* === LOGO ===*/
+
+/* Logo responsive */
+.logo-img {
+  width: auto;
+  max-height: 15vh; /* desktop */
+}
+
+/* === Barre de Navigation === */
+/* === Barre de Navigation === */
+.navbar{
+  padding: 1rem 2rem;
+  /* position: sticky; */
+  position: unset;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links{
+ gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.nav-links a:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* === Menu burger === */
+.burger{
+  display:none;
+  flex-direction: column;
+  justify-content:space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+}
+
+  .burger img {
+    width: 10vw;
+    max-width: 60px;
+    height: auto;
+    display: block;
+  }
 
 
 body {
@@ -81,6 +131,19 @@ body {
   background-color: #EE5656;
   color: white;
   padding: 1.50%;
+}
+/* === CAROUSEL === */
+.Carousel{
+  background-color: rgba(255, 206, 101, 0.288); /* léger fond blanc transparent */
+
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #FFA352;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    background-size: 50%, 50%;
 }
 
 .MaxiCard{
@@ -139,13 +202,13 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
 .contactField textarea,
 .contactField select,
 .contactField ::placeholder {
-    font-family: "Anonymous Pro", monospace;
-    font-weight: 400;
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
 }
 
 .category-card-in {
   position: relative;
- /* overflow: hidden;*/
+  /* overflow: hidden;*/
   border-radius: 20px;
   padding: 1rem;
   background: rgba(255, 206, 101, 0.288); /* léger fond blanc transparent */
@@ -194,7 +257,7 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
 
 .category-preview {
   display: block;
-          /* hauteur fixe commune */
+  /* hauteur fixe commune */
   object-fit: contain;    /* garde les proportions */        /* centre l’image */
   transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -202,6 +265,85 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
 .category-preview:hover {
   transform: scale(1.05);
   filter: brightness(0.9);
+}
+
+/* === FOOTER === */
+
+footer{
+  background-color: #EE5656;
+  margin-top: 10%;
+  padding-top: 5%;
+}
+/* ====== MEDIA QUERIES ===== */
+
+/* MENU RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links{
+    position: fixed;
+    top: 8vh;
+    right: -100%;
+    height:92vh;
+    width:60vw;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3vh;
+    padding-top: 5vh;
+    transition: right 0.3s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+  .burger{
+    display: flex;
+  }
+
+}
+/*  ==== LOGO ====*/
+
+
+
+
+/* === MENU BURGER — Responsive uniquement === */
+@media (max-width: 992px) {
+  /* Le bouton burger */
+  .burger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 1101; /* plus haut que le menu */
+  }
+
+  .burger img,
+  .burger-icon {
+    width: 10vw;
+    max-width: 60px;
+    height: auto;
+    display: block;
+  }
+
+  /* Le menu caché sur mobile */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70vw;
+    height: 100vh;
+    background-color: #f8f0e3;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    padding: 0;
+    margin: 0;
+    transition: left 0.3s ease;
+    z-index: 1100;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
 }
 
 
@@ -218,18 +360,24 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
 }
 
 /* 💡 Pour petits écrans */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
   body {
     margin: 0 !important;   /* au cas où le body ait des marges */
   }
 }
 
+/* ==== LOGO TAILLE ====*/
+@media (max-width :580px){
+  .logo{
+    width:80%;
+  }
+}
 
-/* === FOOTER === */
+/* ==== LABEL TAILLE ==== */
 
-footer{
-  background-color: #EE5656;
-  margin-top: 10%;
-  padding-top: 5%;
+@media (max-width : 770px){
+  .label{
+    width: 100%;
+  }
 }

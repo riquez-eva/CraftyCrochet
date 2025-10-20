@@ -18,8 +18,18 @@ final class HomeController extends AbstractController
         $articles = $articleRepository->findBy(['active' => true], ['id' => 'ASC']);
         // le "1" à la fun limite à un seul article (le best-seller)
 
+        //Le carousel randomisé
+         $allArticles = $articleRepository->findby(['active' => true]);
+
+         //mélange le tableau en PHP (fonctionne avec toute les bases de données)
+        shuffle($allArticles);
+
+        //prends les 2 premières lignes après mélange 
+        $randomArticles = array_slice($allArticles, 0, 2);
+
         return $this->render('home/home.html.twig', [
             'articles' => $articles,
+            'randomArticles' => $randomArticles,
         ]);
     }
 
