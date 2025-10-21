@@ -8,11 +8,11 @@
         {% if categorie.imagePreview %}
                         <img src="{{ asset('pictures/' ~ categorie.imagePreview) }}"
                              alt="{{ categorie.libelle }}"
-                             class="rounded-3 mb-3 imaPreview">
+                             class="rounded-3 mb-3 imagePreview">
         {% endif %}
                         <a href="{{ path('app_categorie', {slug: categorie.slug}) }}" 
                         class="btn ButtonClass anonymous-pro-bold mt-2 float-end">
-                            See more
+                            Shop
                         </a>
                     </div>
                 </div>

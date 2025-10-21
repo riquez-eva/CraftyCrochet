@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Détails{% endblock %}
 {% block body %}
-<img class="mx-auto d-block m-5" src="/pictures/DetailsHeading.svg" alt="Details">
+<img class="mx-auto d-block m-5 label" src="/pictures/DetailsHeading.svg" alt="Details">
 
 
 
@@ -30,7 +30,7 @@
         <!-- Bouton Add To Cart en bas à droite -->
         <div class="position-absolute bottom-0 end-0 m-3 d-flex align-items-center gap-2">
           <p class="mb-0">Add To Cart</p>
-          <a href="#">
+          <a href="/panier/add/{{ article.id }}">
             <img src="{{ asset('pictures/PlusButton.svg') }}" alt="Add to Cart" class="btn-add-to-cart" />
           </a>
         </div>

@@ -216,6 +216,14 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 2%;
 }
+
+.category-card-anim{
+  transition: transform .5s ;
+}
+.category-card-anim:hover{
+  transform: scale(1.1);
+}
+
 .category-card {
   position: relative;
   overflow: hidden;
@@ -274,6 +282,10 @@ footer{
   margin-top: 10%;
   padding-top: 5%;
 }
+.SocialIcon{
+  width: max-content;
+}
+
 /* ====== MEDIA QUERIES ===== */
 
 /* MENU RESPONSIVE */
@@ -350,13 +362,18 @@ footer{
 
 /* 📴 Désactivation des transitions sur mobile */
 @media (max-width: 768px) {
-  .category-card,
   .category-card {
     transition: none !important;
     transform: none !important;
     box-shadow: none !important;
     filter: none !important;
     }
+    .category-card-anim{
+     transition: none ;
+}
+.category-card-anim:hover{
+     transform: none;
+}
 }
 
 /* 💡 Pour petits écrans */
@@ -379,5 +396,16 @@ footer{
 @media (max-width : 770px){
   .label{
     width: 100%;
+  }
+}
+
+/* ==== CATEGORIES LABEL ==== */
+
+@media (max-width : 600px){
+  .imagePreview{
+    width: 60%;
+  }
+  .category-card-in{
+    margin-bottom: 15%;
   }
 }
