@@ -16,22 +16,34 @@ final class PanierController extends AbstractController
     {
         $panier = $session->get("panier", []);
 
-        dump($panier);
+        //dump($panier);
 
         $panier_pour_twig = [];
+        $total= 0;
 
         foreach($panier as $id_article => $quantite){
             $article = $repo->find($id_article);
-            $panier_pour_twig[] = [
-                "article" => $article,
-                "quantite" => $quantite
-            ];
+
+                if($article){
+                    $prix=$article->getPrix();
+                    $sous_total= $prix * $quantite;
+                    $total += $sous_total;
+
+
+                    $panier_pour_twig[] = [
+                        "article" => $article,
+                        "quantite" => $quantite
+                    ];
+                }
+
+
         }
 
-        dump($panier_pour_twig);
+       // dump($panier_pour_twig);
 
         return $this->render('panier/index.html.twig', [
             'panier' =>  $panier_pour_twig,
+            'total' => $total,
         ]);
     }
 
@@ -65,5 +77,14 @@ final class PanierController extends AbstractController
 
        $session->set("panier", $panier);
         return $this->redirect("/panier");
+    }
+    
+
+    #[Route('/panier/clear', name : 'app_clear_panier')]
+    public function clear(SessionInterface $session): Response
+    {
+        $session->remove('panier');
+
+        return $this->redirectToRoute('app_panier');
     }
 }

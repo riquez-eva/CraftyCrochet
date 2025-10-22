@@ -105,6 +105,118 @@
   filter: brightness(1.1);
 }
 
+/* On cible UNIQUEMENT l'icône panier */
+.panier-link {
+  position: relative;
+  display: inline-block;
+}
+
+/* Taille du logo panier */
+.panier-icon {
+  width: auto;
+  height: 100%;
+}
+
+/* Badge rouge sur le logo */
+.badge-panier {
+  background-color: red;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+
+
+
+/* Overlay caché par défaut */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent léger */
+  backdrop-filter: blur(5px);      /* flou de l'arrière-plan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+/* Overlay actif */
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Contenu de l'overlay */
+.overlay-content {
+  background: rgb(255, 223, 163); /* léger fond blanc transparent */
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Animation du contenu quand l'overlay est actif */
+.overlay.active .overlay-content {
+  transform: translateY(0);
+}
+
+.overlay-content h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.overlay-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.overlay-content li {
+  margin: 0.5rem 0;
+}
+
+.overlay-content a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.overlay-content a:hover {
+  color: #EE5656;
+}
+
+#closeOverlay {
+  margin-top: 1rem;
+  background: #EE5656;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#closeOverlay:hover {
+  background: #ee5656a9;
+}
+
+.ButtonCategorie{
+  background-color: #FFA352;
+  color: white;
+  padding: 1.50%;
+}
 /* === Menu burger === */
 .burger{
   display:none;
@@ -132,6 +244,7 @@ body {
   color: white;
   padding: 1.50%;
 }
+
 /* === CAROUSEL === */
 .Carousel{
   background-color: rgba(255, 206, 101, 0.288); /* léger fond blanc transparent */

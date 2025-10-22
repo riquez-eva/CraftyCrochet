@@ -1,0 +1,15 @@
+<div id="categorieOverlay" class="overlay anonymous-pro-bold">
+    <div class="overlay-content text-center">
+        <h2 class="text-secondary">Choisissez une catégorie</h2>
+        <ul>
+            {% for categorie in categories %}
+                <li>
+                    <a href="{{ path('app_categorie', { 'slug': categorie.slug }) }}" class="btn ButtonCategorie rounded">
+                        {{ categorie.libelle }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <button id="closeOverlay">Fermer</button>
+    </div>
+</div>

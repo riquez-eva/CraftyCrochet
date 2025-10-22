@@ -1,23 +1,67 @@
+{# templates/registration/register.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light anonymous-pro-bold">
+    <div class="card shadow-lg border-3" style="border-color:rgb(59, 110, 71); border-radius: 20px; width: 450px;">
+        <div class="card-body p-4">
+            <h2 class="text-center mb-4 text-success fw-bold">Créer un compte</h2>
 
-    <h1>Register</h1>
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
+            {% endfor %}
 
-    {{ form_errors(registrationForm) }}
+            {{ form_start(registrationForm, {'attr': {'class': 'needs-validation'}}) }}
+                <div class="mb-3">
+                    {{ form_label(registrationForm.email, 'Adresse e-mail', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control border-success rounded-pill', 'placeholder': 'Entrez votre e-mail'}}) }}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                <div class="mb-3">
+                    {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control border-success rounded-pill', 'placeholder': 'Choisissez un mot de passe'}}) }}
+                    {{ form_errors(registrationForm.plainPassword) }}
+                </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                <div class="form-check mb-4">
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                    {{ form_label(registrationForm.agreeTerms, 'J’accepte les conditions d’utilisation', {'label_attr': {'class': 'form-check-label'}}) }}
+                    {{ form_errors(registrationForm.agreeTerms) }}
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success rounded-pill fw-semibold py-2">
+                        S’inscrire
+                    </button>
+                </div>
+            {{ form_end(registrationForm) }}
+
+            <p class="text-center mt-3 mb-0">
+                Déjà un compte ?
+                <a href="{{ path('app_login') }}" class="text-success fw-semibold text-decoration-none">
+                    Connectez-vous
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .border-success {
+        border: 2px solid #28a745 !important;
+    }
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    .btn-success:hover {
+        background-color: #218838;
+        color: #fff;
+    }
+</style>
 {% endblock %}

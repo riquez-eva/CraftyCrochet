@@ -1,8 +1,10 @@
 <div class="position-relative">
+<a href="{{ path('app_home') }}">
 <img class="rounded logo mx-auto d-block" src="/pictures/CraftyCrochetLogo.svg" alt="Crafty Crochet Logo">
-
+</a>
 <nav class="navbar navbar-expand-lg justify-content-center m-5 ">
   <div class="navbar-nav text-center nav-links" id="navLinks">
+  <!-- Bouton home -->
     <a class="nav-link px-3" href="{{ path('app_home') }}">
       <img 
         src="{{ app.request.attributes.get('_route') == 'app_home' 
@@ -12,7 +14,8 @@
         class="nav-btn"
       >
     </a>
-    <a class="nav-link px-3" href="{{ path('app_categories') }}">
+     <!-- Bouton catégories -->
+    <a class="nav-link px-3" id="categorieBtn" href="{{ path('app_categories') }}">
       <img 
         src="{{ app.request.attributes.get('_route') == 'app_categories' 
           ? asset('/pictures/SecondaryCategories.svg') 
@@ -21,6 +24,7 @@
         class="nav-btn"
       >
     </a>
+    <!-- Bouton contact -->
     <a class="nav-link px-3" href="{{ path('app_mail')}}">
       <img 
         src="{{ app.request.attributes.get('_route') == 'app_mail' 
@@ -30,6 +34,7 @@
         class="nav-btn"
       >
     </a>
+    <!-- Bouton conexion -->
     <a class="nav-link px-3" href="{{ path('app_login')}}">
       <img 
         src="/pictures/PrimaryLogin.svg" 
@@ -37,13 +42,20 @@
         class="nav-btn"
       >
     </a>
-    <a class="nav-link px-3" href="{{ path('app_panier')}}">
-      <img 
-        src="/pictures/Panier.svg" 
-        alt="Panier" 
-        class="nav-btn"
-      >
-    </a>
+   <!-- Icône panier avec badge -->
+      <a href="{{ path('app_panier') }}" class="nav-link px-3 panier-link position-relative">
+        <img 
+          src="/pictures/Panier.svg" 
+          alt="Panier" 
+          class="panier-icon"
+        >
+
+        {% if cartCount > 0 %}
+          <span class="badge-panier position-absolute top-0 start-100 translate-middle">
+            {{ cartCount }}
+          </span>
+        {% endif %}
+      </a>
   </div>
 
   <!-- Bouton burger -->

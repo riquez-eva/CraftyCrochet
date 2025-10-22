@@ -44,31 +44,16 @@ final class CategoriesController extends AbstractController
         ]);
     }
 
-
-
-
-    #[Route('/accessories', name: 'app_accessories')]
-    public function accessories(): Response
+    
+    public function menuCategories(CategorieRepository $categorieRepository): Response
     {
-        
-
-        return $this->render('categories/accessories.html.twig', [
-            'controller_name' => 'CategoriesController',
-        ]);
-    }
-
-    #[Route('/wearable', name: 'app_wearable')]
-    public function wearable(): Response
-    {
-        return $this->render('categories/wearable.html.twig', [
-            'controller_name' => 'CategoriesController',
-        ]);
-    }
-    #[Route('/decorations', name: 'app_decorations')]
-    public function decorations(): Response
-    {
-        return $this->render('categories/decorations.html.twig', [
-            'controller_name' => 'CategoriesController',
+        // Récupère toutes les catégories actives
+        $categories = $categorieRepository->findBy(['active' => true]);
+    
+        // Rend le petit morceau de Twig (overlay)
+        return $this->render('partials/categories_overlay.html.twig', [
+            'categories' => $categories,
         ]);
     }
 }
+

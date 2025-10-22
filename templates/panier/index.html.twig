@@ -27,7 +27,13 @@
                                     </a>
                         </div>
             {% else %}
-
+                    {% if panier is not empty %}
+                        <div class="text-end anonymous-pro-regular">
+                            <a href="{{ path('app_clear_panier') }}" class="btn btn-danger">
+                                <i class="fa fa-trash"></i> Tout supprimer
+                            </a>
+                        </div>
+                    {% endif %}
                     {% for element in panier %}
                     <div class="col-12 mb-3 p-3 border rounded category-card-in anonymous-pro-regular">
                         <div class="row align-items-center">
@@ -68,6 +74,21 @@
                         </div>
                     </div>
                     {% endfor %}
+                    {% if panier is not empty %}
+                            <div class="text-end fw-bold fs-5">
+                                Total : {{ total|number_format(2, ',', ' ') }} €
+                            </div>
+                        {% else %}
+                            <p>Votre panier est vide.</p>
+                        {% endif %}
+                        {% if panier is not empty %}
+                            <hr>
+                            <div class="text-end mt-3">
+                                <a href="{{ path('app_commander') }}" class="btn btn-success">
+                                    Commander
+                                </a>
+                            </div>
+                        {% endif %}
             {% endif %}
      </div>
 </main>
