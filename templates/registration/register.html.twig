@@ -4,25 +4,30 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light anonymous-pro-bold">
-    <div class="card shadow-lg border-3" style="border-color:rgb(59, 110, 71); border-radius: 20px; width: 450px;">
+<div class="d-flex justify-content-center align-items-center anonymous-pro-bold">
+    <div class="card shadow-lg border-3" style="border-color: #EE5656; border-radius: 20px; width: 450px;">
         <div class="card-body p-4">
-            <h2 class="text-center mb-4 text-success fw-bold">Créer un compte</h2>
+            <h2 class="text-center mb-4 fw-bold textRegister">Créer un compte</h2>
 
             {% for flash_error in app.flashes('verify_email_error') %}
                 <div class="alert alert-danger text-center" role="alert">{{ flash_error }}</div>
             {% endfor %}
 
             {{ form_start(registrationForm, {'attr': {'class': 'needs-validation'}}) }}
+            <div class="mb-3">
+                    {{ form_label(registrationForm.username, 'Pseudo', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                    {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control rounded-pill borderRegister', 'placeholder': 'Entrez votre pseudo'}}) }}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
                 <div class="mb-3">
                     {{ form_label(registrationForm.email, 'Adresse e-mail', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control border-success rounded-pill', 'placeholder': 'Entrez votre e-mail'}}) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control rounded-pill borderRegister', 'placeholder': 'Entrez votre e-mail'}}) }}
                     {{ form_errors(registrationForm.email) }}
                 </div>
 
                 <div class="mb-3">
                     {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control border-success rounded-pill', 'placeholder': 'Choisissez un mot de passe'}}) }}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control rounded-pill borderRegister', 'placeholder': 'Choisissez un mot de passe'}}) }}
                     {{ form_errors(registrationForm.plainPassword) }}
                 </div>
 
@@ -33,7 +38,7 @@
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-success rounded-pill fw-semibold py-2">
+                    <button type="submit" class="btn ButtonClass rounded-pill fw-semibold py-2">
                         S’inscrire
                     </button>
                 </div>
@@ -41,7 +46,7 @@
 
             <p class="text-center mt-3 mb-0">
                 Déjà un compte ?
-                <a href="{{ path('app_login') }}" class="text-success fw-semibold text-decoration-none">
+                <a href="{{ path('app_login') }}" class="fw-semibold text-decoration-none textConnexion">
                     Connectez-vous
                 </a>
             </p>

@@ -1,27 +1,79 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commander{% endblock %}
+{% block title %}Finaliser la commande{% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-    <h1>Finaliser la commande</h1>
-    <p>Total de votre commande : <strong>{{ total|number_format(2, ',', ' ') }} €</strong></p>
+<div class="container py-5 anonymous-pro-bold">
+    <h1 class="text-center mb-5 fw-bold">Finaliser votre commande</h1>
 
-    <form method="post">
-        <div class="mb-3">
-            <label for="nom" class="form-label">Nom complet</label>
-            <input type="text" id="nom" name="nom" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="adresse" class="form-label">Adresse de livraison</label>
-            <input type="text" id="adresse" name="adresse" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Adresse e-mail</label>
-            <input type="email" id="email" name="email" class="form-control" required>
+    <div class="row g-5">
+        <!-- 🧾 Récapitulatif de la commande -->
+        <div class="col-lg-5 ">
+            <div class="category-card-in shadow-sm border-0 rounded-4">
+                <div class="card-body">
+                    <h4 class="card-title mb-4 text-center">Récapitulatif</h4>
+                    <ul class="list-group list-group-flush mb-3">
+                        {% for item in panier %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center category-card-in rounded">
+                                <div>
+                                    <strong>{{ item.libelle }}</strong>
+                                    <small class="d-block text-muted">
+                                        Quantité : {{ item.quantite }}
+                                    </small>
+                                </div>
+                                <span>{{ item.sous_total|number_format(2, ',', ' ') }} €</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center fw-bold fs-5">
+                        <span>Total :</span>
+                        <span class="text-success">{{ total|number_format(2, ',', ' ') }} €</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <button type="submit" class="btn btn-success">Valider la commande</button>
-    </form>
+        <!-- 🧍‍♀️ Formulaire de commande -->
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0 rounded-4 category-card-in">
+                <div class="card-body">
+                    <h4 class="card-title mb-4 text-center">Vos informations</h4>
+
+                    <form method="post" novalidate>
+                        <!-- Nom complet -->
+                        <div class="mb-3">
+                            <label for="nom" class="form-label fw-semibold">Nom complet</label>
+                            <input type="text" id="nom" name="nom" class="form-control rounded-3" 
+                                   placeholder="Ex : Marie Dupont" required>
+                        </div>
+
+                        <!-- Adresse -->
+                        <div class="mb-3">
+                            <label for="adresse" class="form-label fw-semibold">Adresse de livraison</label>
+                            <textarea id="adresse" name="adresse" class="form-control rounded-3" rows="3"
+                                      placeholder="Ex : 12 rue des Lilas, 75000 Paris" required></textarea>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">Adresse e-mail</label>
+                            <input type="email" id="email" name="email" class="form-control rounded-3" 
+                                   placeholder="Ex : marie.dupont@email.com" required>
+                        </div>
+
+                        <!-- Bouton de validation -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill shadow-sm">
+                                <i class="bi bi-bag-check me-2"></i> Valider la commande
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 {% endblock %}

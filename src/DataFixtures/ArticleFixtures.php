@@ -73,6 +73,42 @@ class ArticleFixtures extends Fixture
         $article3->setCategorie($categories['Decorations']); // ✅ sans accent
         $manager->persist($article3);
 
+        $article4 = new Article();
+        $article4->setLibelle('Echarpe Magic Ball');
+        $article4->setDescription('Une écharpe XXL pour vous tenir chaud tout l\'hiver. Et être stylé en plus');
+        $article4->setPrix(34.95);
+        $article4->setImage('Accecharphemagicball.jpeg');
+        $article4->setActive(true);
+        $article4->setCategorie($categories['Accessoires']); // ✅ sans accent
+        $manager->persist($article4);
+
+        $article5 = new Article();
+        $article5->setLibelle('Heart Bag');
+        $article5->setDescription('un petit sac pour vous accompagner lors de vos sorties!');
+        $article5->setPrix(49.95);
+        $article5->setImage('Accheartbag.jpeg');
+        $article5->setActive(true);
+        $article5->setCategorie($categories['Accessoires']); // ✅ sans accent
+        $manager->persist($article5);
+
+        $article6 = new Article();
+        $article6->setLibelle('Porte Lunette');
+        $article6->setDescription('Une place toute mimi pour vos lunettes. PLus de raison de les perdre!');
+        $article6->setPrix(49.95);
+        $article6->setImage('Decoportelunette.jpeg');
+        $article6->setActive(true);
+        $article6->setCategorie($categories['Decorations']); // ✅ sans accent
+        $manager->persist($article6);
+
+        $article7 = new Article();
+        $article7->setLibelle('Pull oversized');
+        $article7->setDescription('Pull parfait pour se sentir confortable et au chaud cet hiver');
+        $article7->setPrix(49.95);
+        $article7->setImage('Wearoversizepull.jpeg');
+        $article7->setActive(true);
+        $article7->setCategorie($categories['Vetements']); // ✅ sans accent
+        $manager->persist($article7);
+
         $manager->flush();
     }
 }

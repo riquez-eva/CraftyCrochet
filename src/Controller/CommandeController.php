@@ -19,45 +19,63 @@ final class CommandeController extends AbstractController
         ArticleRepository $repo,
         EntityManagerInterface $manager,
         Request $request
-    ): Response
-    {
+    ): Response {
         $panier = $session->get('panier', []);
 
-        if (empty($panier)){
+        // 🚨 Vérification : panier vide
+        if (empty($panier)) {
             $this->addFlash('warning', 'Votre panier est vide.');
             return $this->redirectToRoute('app_panier');
         }
 
-        //Cacul total du panier
-
+        // 🧾 Préparation du récapitulatif et calcul du total
+        $articles = [];
         $total = 0;
+
         foreach ($panier as $id_article => $quantite) {
             $article = $repo->find($id_article);
-            if ($article){
+            if ($article) {
+                $articles[] = [
+                    'libelle' => $article->getLibelle(),
+                    'prix' => $article->getPrix(),
+                    'quantite' => $quantite,
+                    'sous_total' => $article->getPrix() * $quantite,
+                ];
                 $total += $article->getPrix() * $quantite;
             }
         }
 
-        //Si on soumet le formulaire (on fera le vrai formulaire plus tard)
-        /** @var \App\Entity\Commande|null $commande */
+        // 📨 Soumission du formulaire
         if ($request->isMethod('POST')) {
+            $nom = trim($request->request->get('nom'));
+            $adresse = trim($request->request->get('adresse'));
+            $email = trim($request->request->get('email'));
+
+            // ⚙️ Création de la commande
             $commande = new Commande();
-            $commande->setDateDeCommande(new \DateTime());
+            $commande->setDateDeCommmande(new \DateTime());
             $commande->setTotal($total);
             $commande->setEtat(0);
+            $commande->setNom($nom);
+            $commande->setAdresse($adresse);
+            $commande->setEmail($email);
 
+            // 💾 Enregistrement
             $manager->persist($commande);
             $manager->flush();
 
+            // 🧹 Nettoyage du panier
             $session->remove('panier');
 
-            $this->addFlash('success', 'Votre commande a été enregistrée avec succès!');
+            $this->addFlash('success', 'Votre commande a été enregistrée avec succès !');
 
-            return $this->redirectToRoute('app_panier');
+            return $this->redirectToRoute('app_home');
         }
 
+        // 🖥️ Affichage du template
         return $this->render('commande/commander.html.twig', [
             'total' => $total,
+            'panier' => $articles,
         ]);
     }
 }

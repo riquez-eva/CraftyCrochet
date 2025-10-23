@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+<div class="profile-page anonymous-pro-bold">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar"></div>
+            <h2></h2>
+            <p></p>
+        </div>
+
+       <div class="profile-details">
+    <h3>Informations du compte</h3>
+
+    {% if user %}
+        <ul>
+            <li><strong class="anonymous-pro-regular">Nom d'utilisateur :</strong> {{ user.username ?: 'Non défini' }}</li>
+            <li><strong class="anonymous-pro-regular">Email :</strong> {{ user.email ?: 'Non défini' }}</li>
+            <!-- Autres infos si besoin -->
+        </ul>
+    {% else %}
+        <p>Utilisateur non connecté.</p>
+    {% endif %}
+</div>
+
+        <div class="profile-actions">
+            <a href="{{ path('app_logout') }}" class="btn-logout">Se déconnecter</a>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .profile-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 15px;
+    }
+
+    .profile-card {
+        background: rgba(255, 206, 101, 0.288); /* léger fond blanc transparent */
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        max-width: 400px;
+        width: 100%;
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .profile-header .avatar {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background-color: #4a90e2;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .profile-header h2 {
+        margin: 0;
+        font-size: 1.6em;
+    }
+
+    .profile-header p {
+        color: #666;
+        margin-top: 5px;
+        font-size: 0.95em;
+    }
+
+    .profile-details {
+        margin: 25px 0;
+        text-align: left;
+    }
+
+    .profile-details h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .profile-details ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .profile-details li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 0.95em;
+    }
+
+    .profile-actions {
+        margin-top: 20px;
+    }
+
+    .btn-logout {
+        display: inline-block;
+        padding: 10px 25px;
+        border-radius: 8px;
+        background-color: #ff4d4f;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn-logout:hover {
+        background-color: #e43e3e;
+    }
+
+    @media (max-width: 480px) {
+        .profile-card {
+            padding: 20px;
+        }
+
+        .profile-header h2 {
+            font-size: 1.3em;
+        }
+    }
+</style>
+{% endblock %}

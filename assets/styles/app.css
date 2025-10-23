@@ -80,8 +80,8 @@
   max-height: 15vh; /* desktop */
 }
 
-/* === Barre de Navigation === */
-/* === Barre de Navigation === */
+
+                                                        /* === Barre de Navigation === */
 .navbar{
   padding: 1rem 2rem;
   /* position: sticky; */
@@ -110,6 +110,10 @@
   position: relative;
   display: inline-block;
 }
+/*taille du bouton profil*/
+.profil-icon{
+  height: 6rem;
+}
 
 /* Taille du logo panier */
 .panier-icon {
@@ -130,8 +134,6 @@
   text-align: center;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
 }
-
-
 
 
 /* Overlay caché par défaut */
@@ -387,8 +389,37 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
   transform: scale(1.05);
   filter: brightness(0.9);
 }
+                                                       /*===== CREER UN COMPTE  ====*/
 
-/* === FOOTER === */
+.textRegister{
+  color: #EE5656;
+}
+
+.borderRegister{
+  border-color: #EE5656;
+}
+
+                                                        /*=== CONNEXION UN COMPTE ===*/
+
+.textConnexion{
+  color: #f4a261;
+}
+
+.borderConnexion{
+  border-color: #f4a261;
+}
+
+.btnConnexion{
+  background-color: #f4a261;
+}
+
+                                                          /*====  RESET PASSWORD  ====*/
+
+.mainReset{
+  padding-left: 15%;
+  padding-right: 15%;
+}
+                                                                    /* === FOOTER === */
 
 footer{
   background-color: #EE5656;
@@ -399,7 +430,7 @@ footer{
   width: max-content;
 }
 
-/* ====== MEDIA QUERIES ===== */
+                                                            /* ====== MEDIA QUERIES ===== */
 
 /* MENU RESPONSIVE */
 @media (max-width: 768px) {
@@ -425,7 +456,33 @@ footer{
   }
 
 }
-/*  ==== LOGO ====*/
+                                          /* =====  ADDFLASH CONFIRMATION DE COMMANDE  ===== */
+.notification-toast {
+    background: linear-gradient(135deg, #e7f8ef, #f8fdf9);
+    border: 1px solid #c5ecd4;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    color: #3a614f;
+    font-family: "Poppins", "Nunito", sans-serif;
+    animation: popIn 0.5s ease-out;
+    z-index: 9999;
+}
+
+.notification-toast .btn-close {
+    filter: invert(50%) sepia(20%) saturate(300%) hue-rotate(100deg);
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 
 
 
