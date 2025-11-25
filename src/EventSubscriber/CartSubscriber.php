@@ -20,9 +20,14 @@ class CartSubscriber implements EventSubscriberInterface
 
     public function onKernelController(ControllerEvent $event)
     {
-        $request = $this->requestStack->getCurrentRequest();
-        $session = $request->getSession();
+        $request = $event->getRequest();
 
+        // Empêcher la session sur les endpoints API (sinon erreur 500)
+        if (str_starts_with($request->getPathInfo(), '/api')) {
+            return;
+        }
+
+        $session = $request->getSession();
         $panier = $session->get('panier', []);
         $cartCount = array_sum($panier);
 

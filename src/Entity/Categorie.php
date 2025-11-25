@@ -2,29 +2,37 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[ApiResource()]
 class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['article:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['article:read'])]
     private ?string $libelle = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['article:read'])]
     private ?string $image = null;
 
     #[ORM\Column]
+    #[Groups(['article:read'])]
     private ?bool $active = null;
 
     #[ORM\Column(length: 255, unique: true)]
+    #[Groups(['article:read'])]
     private ?string $slug = null;
 
     /**
@@ -34,6 +42,7 @@ class Categorie
     private Collection $articles;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['article:read'])]
     private ?string $imagePreview = null;
 
     public function __construct()
@@ -54,7 +63,6 @@ class Categorie
     public function setLibelle(string $libelle): static
     {
         $this->libelle = $libelle;
-
         return $this;
     }
 
@@ -66,7 +74,6 @@ class Categorie
     public function setImage(?string $image): static
     {
         $this->image = $image;
-
         return $this;
     }
 
@@ -78,7 +85,6 @@ class Categorie
     public function setActive(bool $active): static
     {
         $this->active = $active;
-
         return $this;
     }
 
@@ -100,11 +106,16 @@ class Categorie
         return $this;
     }
 
-        // src/Entity/Categorie.php
+    public function removeArticle(Article $article): static
+    {
+        if ($this->articles->removeElement($article)) {
+            if ($article->getCategorie() === $this) {
+                $article->setCategorie(null);
+            }
+        }
 
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
+        return $this;
+    }
 
     public function getSlug(): ?string
     {
@@ -117,19 +128,6 @@ class Categorie
         return $this;
     }
 
-
-    public function removeArticle(Article $article): static
-    {
-        if ($this->articles->removeElement($article)) {
-            // set the owning side to null (unless already changed)
-            if ($article->getCategorie() === $this) {
-                $article->setCategorie(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getImagePreview(): ?string
     {
         return $this->imagePreview;
@@ -138,7 +136,6 @@ class Categorie
     public function setImagePreview(?string $imagePreview): static
     {
         $this->imagePreview = $imagePreview;
-
         return $this;
     }
 }

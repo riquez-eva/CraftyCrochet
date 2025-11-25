@@ -320,7 +320,24 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
   font-family: "Anonymous Pro", monospace;
   font-weight: 400;
 }
+                                                    /*===  Card Article  ===*/
+     /* Uniformise la hauteur de la card interne */
+.CardArticle {
+     height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
+/* La description occupe l'espace variable */
+.CardArticle p.anonymous-pro-regular {
+    flex-grow: 1;
+}
+
+/* Le bouton descend en bas */
+.CardArticle a.btn {
+    margin-top: auto;
+}
+                                               
 .category-card-in {
   position: relative;
   /* overflow: hidden;*/
@@ -330,6 +347,7 @@ background: linear-gradient(74deg, rgba(240, 70, 70, 0.64) 37%, rgba(242, 201, 1
   backdrop-filter: blur(6px); /* effet verre dépoli */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 2%;
+  height: 100%;
 }
 
 .category-card-anim{

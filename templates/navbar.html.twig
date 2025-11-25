@@ -17,7 +17,7 @@
      <!-- Bouton catégories -->
     <a class="nav-link px-3" id="categorieBtn" href="{{ path('app_categories') }}">
       <img 
-        src="{{ app.request.attributes.get('_route') == 'app_categories' 
+        src="{{ app.request.attributes.get('_route') == 'app_categorie' 
           ? asset('/pictures/SecondaryCategories.svg') 
           : asset('/pictures/PrimaryCategories.svg') }}" 
         alt="Categories" 
@@ -37,9 +37,9 @@
     <!-- Bouton connexion -->
     <a class="nav-link px-3" href="{{ path('app_login')}}">
       <img 
-        src="{{ app.request.attributes.get('_route') == 'app_mail' 
-          ? asset('/pictures/PrimaryLogin.svg') 
-          : asset('/pictures/SecondaryLogin.svg') }}" 
+        src="{{ app.request.attributes.get('_route') == 'app_login' 
+          ? asset('/pictures/SecondaryLogin.svg') 
+          : asset('/pictures/PrimaryLogin.svg') }}" 
         alt="Login" 
         class="nav-btn"
       >

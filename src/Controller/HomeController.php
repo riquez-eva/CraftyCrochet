@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'app_home')]
     public function home(ArticleRepository $articleRepository): Response
     {
         //On récupère tout les articles actifs
@@ -41,7 +41,7 @@ final class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/contact', name: 'app_contact')]
+  /*  #[Route('/contact', name: 'app_contact')]
     public function contact(): Response
     {
 
@@ -50,5 +50,5 @@ final class HomeController extends AbstractController
         return $this->render('home/contact.html.twig', [
             "form" => $form    
         ]);
-    }
+    }*/
 }
