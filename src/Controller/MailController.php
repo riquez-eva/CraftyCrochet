@@ -28,12 +28,13 @@ final class MailController extends AbstractController
 
             $email = (new TemplatedEmail())
                 ->from($data->getEmail())
-                ->to('admin@site.com')
+                ->to('eva.riquez@gmail.com')
                 ->subject($data->getObjet())
                 ->html($data->getMessage())
                 ->htmlTemplate('mail/message.html.twig')
                 ->context([
                    'message' => $data->getMessage(),
+                   'from' => $data->getEmail(),
                 ]);
 
                 ;
@@ -45,7 +46,7 @@ final class MailController extends AbstractController
                 'Votre message a bien été envoyé!'
             );
 
-            return $this->redirect('/home');
+            return $this->redirect('/');
         }
 
         return $this->render('mail/index.html.twig', [
