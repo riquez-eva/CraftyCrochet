@@ -44,7 +44,7 @@ security:
 
     access_control:
         # exemple : restreindre /admin aux admins
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/admin, roles: ROLE_ADMIN }
         # tu pourras protéger d'autres pages plus tard, ex:
         # - { path: ^/profil, roles: ROLE_USER }
 
