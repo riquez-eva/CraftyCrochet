@@ -28,7 +28,7 @@ class Commande
     /**
      * @var Collection<int, detail>
      */
-    #[ORM\OneToMany(targetEntity: detail::class, mappedBy: 'commande')]
+    #[ORM\OneToMany(targetEntity: Detail::class, mappedBy: 'commande')]
     private Collection $detail;
 
     #[ORM\Column(length: 255)]

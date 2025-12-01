@@ -4,13 +4,37 @@ namespace App\DataFixtures;
 
 use App\Entity\Article;
 use App\Entity\Categorie;
+use App\Entity\Utilisateur;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Config\Security\ProviderConfig\Memory\UserConfig;
 
 class ArticleFixtures extends Fixture
 {
+
+    public function __construct(private UserPasswordHasherInterface $hasher) {}
+
+
     public function load(ObjectManager $manager): void
     {
+        //Users
+        $users = [];
+
+
+        $admin = new Utilisateur();
+        $admin->setUsername('Administrateur de Crafty Crochet')
+            ->setEmail('admin@craftyCrochet.fr')
+            ->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+
+        $password_hash = $this->hasher->hashPassword($admin, "123456");
+
+        $admin->setPassword($password_hash);
+
+        $users[] = $admin;
+        $manager->persist($admin);
+
+        //categories
         $categories = [];
 
         // Tableau clé = nom humain / valeur = slug
@@ -20,17 +44,17 @@ class ArticleFixtures extends Fixture
                 'image' => 'TitreAccessoires.svg',
                 'imagePreview' => 'PreviewAccessoires.svg',
             ],
-             'Vetements' => [
+            'Vetements' => [
                 'slug' => 'vetements',
                 'image' => 'TitreVetements.svg',
                 'imagePreview' => 'PreviewVetements.svg',
-             ],
-             'Decorations' => [
+            ],
+            'Decorations' => [
                 'slug' => 'decorations',
                 'image' => 'TitreDecorations.svg',
                 'imagePreview' => 'PreviewDecorations.svg',
 
-             ]
+            ]
         ];
 
         foreach ($nomsCategories as $nom => $data) {
@@ -40,7 +64,7 @@ class ArticleFixtures extends Fixture
             $categorie->setImage($data['image']);
             $categorie->setImagePreview($data['imagePreview']);
             $categorie->setActive(true);
-            
+
             $manager->persist($categorie);
             $categories[$nom] = $categorie;
         }
