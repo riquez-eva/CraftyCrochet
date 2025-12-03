@@ -2,4 +2,47 @@
 
 {% block content %}
 <h1>Bienvenue sur le tableau de bord de CraftyCrochet!</h1>
+<br>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card text-bg-light mb-3">
+            <div class="card-header">Articles</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ articlesCount }}</h5>
+                <a href="{{ ea_url().setController('App\\Controller\\Admin\\ArticleCrudController') }}" 
+                   class="btn btn-primary">Gérer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-bg-light mb-3">
+            <div class="card-header">Utilisateurs</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ utilisateurCount }}</h5>
+                <a href="{{ ea_url().setController('App\\Controller\\Admin\\UtilisateurCrudController') }}" 
+                   class="btn btn-primary">Gérer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-bg-light mb-3">
+            <div class="card-header">Commandes</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ commandeCount }}</h5>
+                <a href="{{ ea_url().setController('App\\Controller\\Admin\\CommandeCrudController') }}" 
+                   class="btn btn-primary">Gérer</a>
+            </div>
+        </div>
+    </div>
+
+</div><br>
+
+<div><a href="{{ path('app_home') }}" 
+                   class="btn btn-primary">Retour au menu principal</a></div>
+
+
 {% endblock %}

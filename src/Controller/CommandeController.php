@@ -22,13 +22,13 @@ final class CommandeController extends AbstractController
     ): Response {
         $panier = $session->get('panier', []);
 
-        // 🚨 Vérification : panier vide
+        // Vérification : panier vide
         if (empty($panier)) {
             $this->addFlash('warning', 'Votre panier est vide.');
             return $this->redirectToRoute('app_panier');
         }
 
-        // 🧾 Préparation du récapitulatif et calcul du total
+        //récapitulatif et calcul du total
         $articles = [];
         $total = 0;
 
@@ -45,13 +45,13 @@ final class CommandeController extends AbstractController
             }
         }
 
-        // 📨 Soumission du formulaire
+        //formulaire
         if ($request->isMethod('POST')) {
             $nom = trim($request->request->get('nom'));
             $adresse = trim($request->request->get('adresse'));
             $email = trim($request->request->get('email'));
 
-            // ⚙️ Création de la commande
+            //commande
             $commande = new Commande();
             $commande->setDateDeCommmande(new \DateTime());
             $commande->setTotal($total);
@@ -60,11 +60,10 @@ final class CommandeController extends AbstractController
             $commande->setAdresse($adresse);
             $commande->setEmail($email);
 
-            // 💾 Enregistrement
             $manager->persist($commande);
             $manager->flush();
 
-            // 🧹 Nettoyage du panier
+            //Nettoyage du panier
             $session->remove('panier');
 
             $this->addFlash('success', 'Votre commande a été enregistrée avec succès !');
@@ -72,7 +71,7 @@ final class CommandeController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        // 🖥️ Affichage du template
+        //Affichage du template
         return $this->render('commande/commander.html.twig', [
             'total' => $total,
             'panier' => $articles,

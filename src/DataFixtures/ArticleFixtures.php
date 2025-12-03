@@ -34,6 +34,17 @@ class ArticleFixtures extends Fixture
         $users[] = $admin;
         $manager->persist($admin);
 
+        $user1 = new Utilisateur();
+        $user1->setUsername('Utilisateur 1')
+            ->setEmail('user.1@gmail.com')
+            ->setRoles(['ROLE_USER']);
+
+        $password_hash1 = $this->hasher->hashPassword($user1, "123456");
+
+        $user1->setPassword($password_hash1);
+
+        $users[] = $user1;
+         $manager->persist($user1);
         //categories
         $categories = [];
 
