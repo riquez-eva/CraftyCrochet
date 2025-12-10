@@ -1,9 +1,5 @@
-<ul>
-    {% for d in value %}
-        <li>
-         Quantité : {{ d.quantite }}
-        </li>
-    {% endfor %}
-</ul>
-
-{{ dump(value) }}
+{% for detail in field.value %}
+    <div>
+        {{ detail.article.nom }} - {{ detail.quantite }}
+    </div>
+{% endfor %}

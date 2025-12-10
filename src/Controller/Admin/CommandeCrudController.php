@@ -32,13 +32,17 @@ class CommandeCrudController extends AbstractCrudController
         TextField::new('email'),
         TextField::new('adresse'),
         CollectionField::new('detail')
-            ->onlyOnDetail()
-            ->setTemplatePath('admin/details_list.html.twig'),
+            ->setTemplatePath('admin/details_list.html.twig') // optionnel si tu veux personnaliser
+            ->onlyOnDetail() // ou supprimer si tu veux sur la liste aussi
+            ->setFormTypeOptions([
+        'by_reference' => false, // obligatoire pour ajouter/supprimer des détails depuis la commande
+    ])
+            ->setEntryIsComplex(true),
         DateField::new('date_de_commmande'),
         IntegerField::new('etat')
     ];
 
-    dump($fields);
+   // dump($fields);
 
     return $fields;
 }
