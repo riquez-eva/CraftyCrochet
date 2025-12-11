@@ -1,5 +1,10 @@
-GET https://127.0.0.1:8000/api
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NjUyNzMwNjQsImV4cCI6MTc2NTI3NjY2NCwicm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJlbWFpbCI6ImFkbWluQGNyYWZ0eUNyb2NoZXQuZnIifQ.LeIpPybjHTKobaqpwtE3jE6b_PK8UlzfLGtkrLu9t49vXnImAxsAlH-2WJM8mkTrnvqahA1J7rltlLcIzIBwax1KEzsQytVe26Sid0Jelz4IFaFm_PM_HP_x4D6WLSPZcQamGXeCuDBqN8viNDhDckhhj19c3mvgyy1mnVYu2Hwpru6w89gWL5R1IgRHtQypuvyUDuZiPMN5JCaBPZV2as6QrWsro26p5DU7Bhsz394jfAdL1x-eMzBpb4cEPw3jH5_nPnoF5Cg4nCS7sZDzR9W52n4hIRsIj-7FoLFOLDKXbBMzPYulUjEZMp3dJSmZ4aI05wopkyn2wu6PIJgQ3g
+GET https://127.0.0.1:8000/api/articles
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NjUzODA1NTcsImV4cCI6MTc2NTM4NDE1Nywicm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJlbWFpbCI6ImFkbWluQGNyYWZ0eUNyb2NoZXQuZnIifQ.tmkR3nAD3JqGJKNnTW1x2aM-34Dwn-XUYfVo1HB0fY-zAqNS1kS9HqcsoxfTVEnI-vdzGZP7E0mn1vBAICQZFH9T3NBzFC4YZIs25_eYlIW847o1xDrH4aspQa-9fpO9vXy2d_iasTPg0nj4i3gNj6Qva-k6CRv4_4971SlErpXB31ZRXmRMZqLyxGzYZvAbg8uvqsp1SGd1NUXYw6-Atbi4ogQMZuZGnHb_I0aH33Kq35tYA2gB11bLabr5VTTb97--vERiKzGyOLPVlNdFKJGjlGrlhSh7zQfrdy3Sf6rcoXxJUyOIbxgeWMdjOqPX57XtqtVwn0eSkHQw
+
+
+
+
+
 ###
 
 GET https://127.0.0.1:8000/api/categories
@@ -11,6 +16,8 @@ curl -i -X POST http://127.0.0.1:8000/api/login_check \
   -d '{"email":"tot@test.com","password":"123456"}'
 
 ###
+
+
 
 POST https://127.0.0.1:8000/api/login_check
 Content-Type: application/json

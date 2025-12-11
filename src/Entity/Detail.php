@@ -62,4 +62,9 @@ class Detail
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return 'Detail #' . $this->getId();
+    }
 }

@@ -138,4 +138,9 @@ class Categorie
         $this->imagePreview = $imagePreview;
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->libelle ?? '';
+    }
 }
